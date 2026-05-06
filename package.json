@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build:mac": "electron-builder --mac universal"
+    "build:mac": "electron-builder --mac"
   },
   "build": {
     "appId": "advantage-club-app-swiggy",
@@ -14,13 +14,9 @@
       "output": "dist"
     },
     "mac": {
-      "target": [
-        {
-          "target": "dmg",
-          "arch": [
-            "universal"
-          ]
-        }
+      "target": "dmg",
+      "arch": [
+        "universal"
       ],
       "category": "public.app-category.business",
       "icon": "a4km8-o0yny.icns"
@@ -30,7 +26,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^24.3.1",
-    "electron-builder": "^24.4.0",
+    "electron-builder": "^24.13.3",
     "electron-packager": "^17.1.1",
     "electron-winstaller": "^5.1.0",
     "electron-wix-msi": "^5.0.0"
