@@ -1,0 +1,5 @@
+node_modules
+dist
+release-builds
+build
+mac_swiggy

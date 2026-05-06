@@ -1,0 +1,26 @@
+name: Build macOS App
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Remove problematic dependencies
+        run: |
+          npm pkg delete devDependencies.appdmg
+          npm pkg delete devDependencies.electron-installer-dmg
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Universal macOS App
+        run: npx electron-builder --mac universal
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: SwiggyVibes-mac
+          path: dist/*.dmg
